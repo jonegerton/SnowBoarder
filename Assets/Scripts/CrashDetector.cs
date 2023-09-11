@@ -5,16 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class CrashDetector : MonoBehaviour
 {
-    [SerializeField] float ReloadDelay = 1f;
-    [SerializeField] ParticleSystem CrashEffect;
+    [SerializeField] float reloadDelay = 1f;
+    [SerializeField] ParticleSystem crashEffect;
 
     void OnTriggerEnter2D(Collider2D other) {
         
         Debug.Log("CrashDetector.OnTriggerEnter2D");
 
         if (other.tag == "Snow") {
-            CrashEffect.Play();
-            Invoke("ReloadScene", ReloadDelay);
+            crashEffect.Play();
+            Invoke("ReloadScene", reloadDelay);
         }
     }
 
