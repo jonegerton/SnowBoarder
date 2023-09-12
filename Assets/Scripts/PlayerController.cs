@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float baseSpeed = 20f;
 
+    bool canMove = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,11 +26,19 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!canMove) {
+            return;
+        }
+        
         RotateMethod();
-        ResponseToBoost();
+        RespondToBoost();
     }
 
-    void ResponseToBoost()
+    public void DisableControls() {
+        canMove = false;
+    }
+
+    void RespondToBoost()
     {
         if (Input.GetKey(KeyCode.UpArrow))
         {
